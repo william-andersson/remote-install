@@ -9,7 +9,7 @@ menuentry "Fedora install" --id BOOTID-fedora {
 	search --set=root --label DISKLABEL
 	set isofile="/linux.iso"
 	loopback loop (${root})$isofile
-	linux (loop)/images/pxeboot/vmlinuz inst.stage2=hd:/dev/PARTITION:$isofile inst.headless inst.vnc inst.vncpassword=xinstall
+	linux (loop)/images/pxeboot/vmlinuz inst.stage2=hd:/dev/PARTITION:$isofile inst.headless inst.vnc inst.vncpassword=PASSWORD
 	#linux (loop)/images/pxeboot/vmlinuz inst.stage2=hd:/dev/PARTITION:$isofile inst.headless inst.sshd
 	initrd (loop)/images/pxeboot/initrd.img
 }
