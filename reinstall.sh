@@ -7,6 +7,7 @@ if [[ $EUID -ne 0 ]]; then
 fi
 clear
 PART_LABEL="isoboot" # A partition with this label must exist.
+PASSWORD="xinstall" # Set VNC password.
 DISK_PATH=$(readlink -f /dev/disk/by-label/$PART_LABEL)
 PARTITION=$(readlink -f /dev/disk/by-label/$PART_LABEL | sed 's:.*/::')
 fedora=$(ls | grep *Fedora*.iso)
@@ -79,6 +80,7 @@ else
 		sed -i 's/PARTITION/'$PARTITION'/' /etc/grub.d/40_custom
 		sed -i 's/DISKLABEL/'$PART_LABEL'/' /etc/grub.d/40_custom
 		sed -i 's/BOOTID/'$PART_LABEL'/' /etc/grub.d/40_custom
+		sed -i 's/PASSWORD/'$PASSWORD'/' /etc/grub.d/40_custom
 
 		echo "Updating grub ..."
 		grub2-mkconfig -o /boot/grub2/grub.cfg
@@ -93,7 +95,7 @@ else
 		echo ""
 		echo "1. Wait for the server to reboot."
 		echo "2. Connect to ip $(hostname -I):1 using VNC"
-		echo "3. Enter password: xinstall"
+		echo "3. Enter password: $PASSWORD"
 		echo ""
 
 		read -p "Press enter to reboot"
