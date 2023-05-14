@@ -59,22 +59,10 @@ else
 		echo "Mounting partition $PART_LABEL ($DISK_PATH) to /mnt/ ..."
 		mount -L $PART_LABEL /mnt/
 
-		if [ $dist == "fedora" ]; then
-			echo "Copying $fedora to /mnt/linux.iso ..."
-			cp $fedora /mnt/linux.iso
-			echo "Copying 40_fedora to /etc/grub.d/40_custom ..."
-			cp 40_fedora /etc/grub.d/40_custom
-		elif [ $dist == "rocky" ]; then
-			echo "Copying $rocky to /mnt/linux.iso ..."
-			cp $rocky /mnt/linux.iso
-			echo "Copying 40_rocky to /etc/grub.d/40_custom ..."
-			cp 40_rocky /etc/grub.d/40_custom
-		elif [ $dist == "suse" ]; then
-			echo "Copying $suse to /mnt/linux.iso ..."
-			cp $suse /mnt/linux.iso
-			echo "Copying 40_suse to /etc/grub.d/40_custom ..."
-			cp 40_suse /etc/grub.d/40_custom
-		fi
+		echo "Copying ${!dist} to /mnt/linux.iso ..."
+		cp ${!dist} /mnt/linux.iso
+		echo "Copying 40_$dist to /etc/grub.d/40_custom ..."
+		cp 40_$dist /etc/grub.d/40_custom
 
 		echo "Processing 40_custom ..."
 		sed -i 's/PARTITION/'$PARTITION'/' /etc/grub.d/40_custom
