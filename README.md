@@ -1,7 +1,7 @@
 # remote-install
 Install linux remotely using vnc
 
-1. Put the files in a folder on the server.
+1. Put the files in a folder on the server together with an iso.
 2. Create a partition of at least 1GB to house an iso during reboot.
 3. Give the partition the label "isoboot".
 4. When it's time to reinstall, just execute the reinstall.sh script.
