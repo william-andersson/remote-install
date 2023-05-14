@@ -11,7 +11,7 @@ Install linux remotely using vnc
 **You can at any time before the reboot, press ctrl-c to abort the process** 
 
 # Warning!
-The script tries to boot the chosen iso just one, **BUT!!!** if grub is installed onto mdraid or lvm,<br />
+The script tries to boot the chosen iso just one, ***BUT! if grub is installed onto mdraid or lvm***,<br />
 the machine will continue to boot the iso if the booted installation is aborted!<br />
 This does not apply if you abort before the reboot.
 
