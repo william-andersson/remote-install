@@ -9,7 +9,7 @@ menuentry "Rocky install" --id BOOTID-rocky {
 	search --set=root --label DISKLABEL
 	set isofile="/linux.iso"
 	loopback loop (${root})$isofile
-	linux (loop)/isolinux/vmlinuz inst.stage2=hd:/dev/PARTITION:$isofile inst.headless inst.vnc inst.vncpassword=xinstall
+	linux (loop)/isolinux/vmlinuz inst.stage2=hd:/dev/PARTITION:$isofile inst.headless inst.vnc inst.vncpassword=PASSWORD
 	#linux (loop)/isolinux/vmlinuz inst.stage2=hd:/dev/PARTITION:$isofile inst.headless inst.sshd
 	initrd (loop)/isolinux/initrd.img
 }
