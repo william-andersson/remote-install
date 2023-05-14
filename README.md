@@ -34,4 +34,4 @@ Tested iso's
 
 ## Ubuntu?
 Although Ubuntu server is capable of running the installer via ssh,
-I was not able to supply a static password to the installer, yet!
+I was not able to supply a static password to the installer... **Yet!**
