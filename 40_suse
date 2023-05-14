@@ -9,7 +9,7 @@ menuentry "Suse install" --id BOOTID-suse {
 	search --set=root --label DISKLABEL
 	set isofile="/linux.iso"
 	loopback loop (${root})$isofile
-	#linux (loop)/boot/x86_64/loader/linux ssh=1 sshpassword=xinstall
-	linux (loop)/boot/x86_64/loader/linux vnc=1 vncpassword=xinstall
+	#linux (loop)/boot/x86_64/loader/linux ssh=1 sshpassword=PASSWORD
+	linux (loop)/boot/x86_64/loader/linux vnc=1 vncpassword=PASSWORD
 	initrd (loop)/boot/x86_64/loader/initrd
 }
