@@ -8,8 +8,8 @@ Install linux remotely using vnc
 5. The server will soon reboot into the installer and you can connect to it using vnc.
 
 # How it works
-./reinstall<br />
-./reinstall suse<br /><br />
+./reinstall.sh<br />
+./reinstall.sh suse<br /><br />
 When executed, the script will look for a partition labeled "isoboot", mount it and
 start copying the requested iso.<br />Afterwards, it will copy the corresponding 40_custom
 and make some necessary changes to it.<br />
