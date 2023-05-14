@@ -7,6 +7,15 @@ Install linux remotely using vnc
 4. When it's time to reinstall, just execute the reinstall.sh script.
 5. The server will soon reboot into the installer and you can connect to it using vnc.
 
+# How it works
+./reinstall
+./reinstall suse
+When executed the script will look for a partition labeled "isoboot", mount it and
+start copying the requested iso. Afterwards, it will copy the corresponding 40_custom
+and make some necessary changes to it.
+Finally it updates grub to boot the iso using a loopback device.
+Before rebooting it will print ip-address and vnc password.
+
 # Disclaimer!
 The script only works with Fedora-server, RockyLinux and OpenSuse!
 (and probably RHEL/Centos/AlmaLinux)
