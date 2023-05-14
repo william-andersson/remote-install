@@ -5,7 +5,15 @@ Install linux remotely using vnc
 2. Create a partition of at least 1GB to house an iso during reboot.
 3. Give the partition the label "isoboot".
 4. When it's time to reinstall, just execute the reinstall.sh script.
-5. The server will soon reboot into the installer and you can connect to it using vnc.
+5. The script will ask you to choose a distro if not supplied as an argument.
+6. When the script is finished, it will reboot the machine into the installer and you can connect to it using vnc.
+
+**You can at any time before the reboot, press ctrl-c to abort the process** 
+
+# Warning!
+The script tries to boot the chosen iso just one, **BUT!!!** if grub is installed onto mdraid or lvm,<br />
+the machine will continue to boot the iso if the booted installation is aborted!<br />
+This does not apply if you abort before the reboot.
 
 # How it works
 ./reinstall.sh<br />
