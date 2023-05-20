@@ -10,9 +10,9 @@ PART_LABEL="isoboot" # A partition with this label must exist.
 PASSWORD="xinstall" # Set VNC password.
 DISK_PATH=$(readlink -f /dev/disk/by-label/$PART_LABEL)
 PARTITION=$(readlink -f /dev/disk/by-label/$PART_LABEL | sed 's:.*/::')
-fedora=$(ls | grep *Fedora*.iso)
-rocky=$(ls | grep *Rocky*.iso)
-suse=$(ls | grep *SUSE*.iso)
+fedora=$(ls | grep *Fedora*.iso) || if [ -z "$fedora" ]; then echo "ERROR: Missing iso for Fedora!"; fedora="NULL";fi
+rocky=$(ls | grep *Rocky*.iso) || if [ -z "$rocky" ]; then echo "ERROR: Missing iso for Rocky!"; rocky="NULL";fi
+suse=$(ls | grep *SUSE*.iso) || if [ -z "$suse" ]; then echo "ERROR: Missing iso for Suse!"; suse="NULL";fi
 
 function abort() {
 	echo -e "\n*** Aborted!"
@@ -47,8 +47,12 @@ else
 	else
 		dist=$1
 	fi
+	
 	if ! [[ $dist =~ ^(fedora|rocky|suse)$ ]]; then
 		echo "Invalid distribution!"
+		exit 1
+	elif [ ${!dist} == "NULL" ]; then
+		echo "No matching iso found!"
 		exit 1
 	fi
 	echo "The server will reboot and start $dist installation via VNC!"
